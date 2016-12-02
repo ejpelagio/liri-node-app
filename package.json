@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/ejpelagio/liri-node-app/issues"
   },
-  "homepage": "https://github.com/ejpelagio/liri-node-app#readme"
+  "homepage": "https://github.com/ejpelagio/liri-node-app#readme",
+  "dependencies": {
+    "inquirer": "^1.2.3",
+    "js-omdb-api": "^0.1.0",
+    "node-tweet-stream": "^2.0.1",
+    "request": "^2.79.0",
+    "spotify": "^0.3.0"
+  },
+  "devDependencies": {}
 }
