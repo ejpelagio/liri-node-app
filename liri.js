@@ -14,13 +14,16 @@ var spotify = require("spotify");
 var fs = require('fs'); 
 //Referencing keys from our files
 var keys = require("./keys.js");
-// Twitter object with keys to acces 
+// Twitter object with keys to access
+
+/*
 var client = new Twitter ({
 		  consumer_key: '<fZ2stiYylhGWyyLcCn9InA0Ck>',
 		  consumer_secret: '<vmhtRPrALPgVwwU3age48GtpIOjHK0bl9EHG7dcqk07Wt740Aa>',
 		  access_token_key: '<191928620-ALPPrHTim6TMrlpnQ3Qk6asbGvV8eu767Xozgez8>',
 		  access_token_secret: '<d2tBp7MqKVFAH4jjXdchglTNEuDc65Klo1jRONlg4qj7p>',
   });
+*/
 
 //*****************************************************************
 			//Twitter
@@ -77,23 +80,39 @@ var getMeSpotify = function(songName) {
 };
 
 // Twitter Fuction is logging in and the displaying Client latest tweets.
-var getTweets = function() {
-  var client = new twitter(dataKeys.twitterKeys);
+
+var   getTweets = function() {
+  var client = new Twitter({
+
+    consumer_key: keys.twitterKeys.consumer_key,
+    consumer_secret: keys.twitterKeys.consumer_secret,
+    access_token_key: keys.twitterKeys.access_token_key,
+    access_token_secret: keys.twitterKeys.access_token_secret
+
+  });
+  console.log(keys.twitterKeys);
 
   var params = { screen_name: 'erikjp512' };
 
   client.get("statuses/user_timeline", params, function(error, tweets, response) {
-
+    //console.log(tweets);
     if (!error) {
+      //console.log('response : ' + response);
       var data = []; //empty array to hold data
       for (var i = 0; i < tweets.length; i++) {
+        /*
         data.push({
             'created at: ' : tweets[i].created_at,
             'Tweets: ' : tweets[i].text,
         });
+        */
+        console.log('created at: ' + tweets[i].created_at);
+        console.log('Tweets: ' + tweets[i].text);
       }
       console.log(data);
-      console.log(tweets[i].text + "\n");
+      //console.log(response[i] + "\n");
+    } else{
+      console.log(error);
     }
   });
 };
