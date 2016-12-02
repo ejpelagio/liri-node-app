@@ -1,9 +1,6 @@
 
-//Liri takes the following arguments
-// * my-tweets
-// * spotify-this-song
-// * movie-this
-// * do-what-it-says
+//LIRI-APP 
+
 
 //Requesting NPM Package
 var request = require("request");
@@ -28,18 +25,19 @@ var client = new Twitter ({
 //*****************************************************************
 			//Twitter
 //*****************************************************************
-//Twitter 
-//Twitter search function
+//Twitter  
 
+//This function allows you to log all data in a file called log.txt
 var writeToLog = function(data) {
   fs.appendFile("log.txt", '\r\n\r\n');
 
   fs.appendFile("log.txt", JSON.stringify(data), function(err) {
+    
     if (err) {
       return console.log(err);
     }
 
-    console.log("log.txt was updated!");
+    console.log("log.txt updated!");
   });
 }
 
@@ -50,9 +48,9 @@ var getArtistNames = function(artist) {
 
 //Function for finding songs on Spotify
 var getMeSpotify = function(songName) {
-  //If it doesn't find a song, find Blink 182's What's my age again
+  //If it doesn't find a song, find the song by Michael Jackson.
   if (songName === undefined) {
-    songName = 'What\'s my age again';
+    songName = 'Thriller';
   };
 
   spotify.search({ type: 'track', query: songName }, function(err, data) {
@@ -60,8 +58,9 @@ var getMeSpotify = function(songName) {
       console.log('Error occurred: ' + err);
       return;
     }
-
+// THis function allows you view what we are requesting 
     var songs = data.tracks.items;
+    
     var data = []; //empty array to hold data
 
     for (var i = 0; i < songs.length; i++) {
@@ -77,7 +76,7 @@ var getMeSpotify = function(songName) {
   });
 };
 
-
+// Twitter Fuction is logging in and the displaying Client latest tweets.
 var getTweets = function() {
   var client = new twitter(dataKeys.twitterKeys);
 
@@ -98,13 +97,13 @@ var getTweets = function() {
     }
   });
 };
-
+//This Function allows us to serch a movie 
 var getMeMovie = function(movieName) {
 
   if (movieName === undefined) {
     movieName = 'The Lion King';
   }
-
+//Movie API CDN
   var urlHit = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=full&tomatoes=true&r=json";
 
   request(urlHit, function(error, response, body) {
@@ -130,6 +129,7 @@ var getMeMovie = function(movieName) {
   });
 
 }
+
 
 var doWhatItSays = function() {
   fs.readFile("random.txt", "utf8", function(error, data) {
