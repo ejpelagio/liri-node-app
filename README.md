@@ -1,6 +1,4 @@
 # liri-node-app
-
-<<<<<<< HEAD
 =======
 week10-liri-App
 
@@ -16,4 +14,4 @@ Follow the format presented in these queries on your Terminal/Bash
 * node liri.js spotify-this-song '<song name here>'
 * node liri.js movie-this '<movie name here>'
 * node liri.js do-what-it-says
->>>>>>> f4dbb52a90486ff6996516544bdd2b4ecbd61fc3
+
