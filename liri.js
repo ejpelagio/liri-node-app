@@ -107,7 +107,7 @@ var   getTweets = function() {
         });
         */
         console.log('created at: ' + tweets[i].created_at);
-        console.log('Tweets: ' + tweets[i].text);
+        console.log('Tweet: ' + tweets[i].text);
       }
       console.log(data);
       //console.log(response[i] + "\n");
